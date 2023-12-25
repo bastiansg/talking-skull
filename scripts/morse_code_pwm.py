@@ -109,6 +109,8 @@ encoded_words = (get_encoded_chars(word) for word in message.split())
 encoded_message = f"{WORD_PAUSE_SIMBOL}".join(encoded_words)
 
 pwm = PWM(Pin(13))
+pwm.freq(1000)
+
 onbd_led = Pin(25, Pin.OUT)
 
 while True:
