@@ -1,0 +1,14 @@
+services:
+    talking-skull-head-devcontainer:
+        network_mode: host
+        image: talking-skull-head-devcontainer
+        container_name: talking-skull-head-devcontainer
+        build:
+            context: ..
+            dockerfile: .devcontainer/Dockerfile
+        volumes:
+            - ..:/workspace:cached
+            - $HOME/.ssh/:/home/vscode/.ssh:ro
+            - $HOME/.gitconfig:/home/vscode/.gitconfig:ro
+        # This keeps the devcontainer running.
+        entrypoint: [ "tail", "-f", "/dev/null" ]
