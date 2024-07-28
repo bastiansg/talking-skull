@@ -2,7 +2,7 @@ from time import sleep
 from machine import Pin, PWM
 
 
-MESSAGE = "feliz año nuevo"
+MESSAGE = "ruido de ola"
 
 DOT_WAIT = 0.5
 DASH_WAIT = DOT_WAIT * 3
@@ -110,7 +110,6 @@ encoded_message = f"{WORD_PAUSE_SIMBOL}".join(encoded_words)
 
 pwm = PWM(Pin(13))
 pwm.freq(1000)
-
 onbd_led = Pin(25, Pin.OUT)
 
 while True:

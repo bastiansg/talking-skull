@@ -4,14 +4,12 @@ from machine import Pin
 
 MESSAGE = "ruido de ola"
 
-
 DOT_WAIT = 0.5
 DASH_WAIT = DOT_WAIT * 3
 BLINK_WAIT = DOT_WAIT / 4
 
 CHAR_PAUSE_SIMBOL = "@"
 WORD_PAUSE_SIMBOL = "#"
-
 
 CODE_MAP = {
     "a": ".-",

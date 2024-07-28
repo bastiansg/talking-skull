@@ -1,25 +1,19 @@
-// https://containers.dev/implementors/json_reference
 {
-	"name": "talking-skull-head",
+	"name": "talking-skull",
 	"dockerComposeFile": "docker-compose.yml",
-	"service": "talking-skull-head-devcontainer",
+	"service": "talking-skull-devcontainer",
 	"workspaceFolder": "/workspace",
 	"customizations": {
 		"vscode": {
 			"settings": {
+				"extensions.verifySignature": false,
 				"notebook.output.scrolling": true,
-				"python.analysis.extraPaths": [
-					"/workspace/src/beat"
-				],
 				"editor.formatOnSave": true,
 				"files.trimFinalNewlines": true,
 				"files.trimTrailingWhitespace": true,
 				"files.watcherExclude": {
-					".git/**": true,
-					"./resources/**": true,
-					"./notebooks/**": true
+					".git/**": true
 				},
-				"python.formatting.provider": "none",
 				"[python]": {
 					"editor.defaultFormatter": "ms-python.black-formatter"
 				},
@@ -27,16 +21,14 @@
 					"--line-length",
 					"79"
 				],
-				"notebook.formatOnSave.enabled": true,
-				"notebook.output.textLineLimit": 10000
+				"notebook.formatOnSave.enabled": true
 			},
 			"extensions": [
-				"ms-python.vscode-pylance",
 				"ms-python.python",
-				"ms-python.black-formatter",
 				"ms-python.flake8",
+				"ms-python.vscode-pylance",
+				"ms-python.black-formatter",
 				"eamodio.gitlens",
-				"njpwerner.autodocstring",
 				"ms-azuretools.vscode-docker"
 			]
 		}
