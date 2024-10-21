@@ -8,9 +8,8 @@ services:
             dockerfile: .devcontainer/Dockerfile
             args:
                 - PYTHON_VERSION
-                - PIP_VERSION
                 - DEVCONTAINER_USER
         volumes:
             - ..:/workspace:cached
         # This keeps the devcontainer running.
-        entrypoint: [ "tail", "-f", "/dev/null" ]
+        entrypoint: ["tail", "-f", "/dev/null"]

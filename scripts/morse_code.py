@@ -49,7 +49,7 @@ CODE_MAP = {
     "8": "---..",
     "9": "----.",
     "0": "-----",
-    ", ": "--..--",
+    ",": "--..--",
     ".": ".-.-.-",
     "?": "..--..",
     "/": "-..-.",
@@ -65,9 +65,7 @@ def normalize_text(text: str) -> str:
 
 
 def get_encoded_chars(word: str) -> str:
-    encoded_chars = f"{CHAR_PAUSE_SIMBOL}".join(
-        CODE_MAP[char] for char in word
-    )
+    encoded_chars = f"{CHAR_PAUSE_SIMBOL}".join(CODE_MAP[char] for char in word)
 
     return encoded_chars
 
@@ -88,20 +86,20 @@ message = normalize_text(MESSAGE)
 encoded_words = (get_encoded_chars(word) for word in message.split())
 encoded_message = f"{WORD_PAUSE_SIMBOL}".join(encoded_words)
 
-pin_13 = Pin(13, Pin.OUT)
+pin_09 = Pin(9, Pin.OUT)
 onbd_led = Pin(25, Pin.OUT)
 
 while True:
     for symbol in encoded_message:
         # The dot duration is the basic unit of time measurement
         if symbol == ".":
-            turn_on_led(pin_13, DOT_WAIT)
+            turn_on_led(pin_09, DOT_WAIT)
             sleep(DOT_WAIT)
             continue
 
         # The duration of a dash is three times the duration of a dot
         if symbol == "-":
-            turn_on_led(pin_13, DASH_WAIT)
+            turn_on_led(pin_09, DASH_WAIT)
             sleep(DOT_WAIT)
             continue
 

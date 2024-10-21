@@ -19,14 +19,6 @@ RUN rm /usr/lib/python${PYTHON_VERSION}/EXTERNALLY-MANAGED
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python${PYTHON_VERSION} 1 \
     && update-alternatives --install /usr/bin/python3 python3 /usr/bin/python${PYTHON_VERSION} 1
 
-WORKDIR /tmp
-
-ARG PIP_VERSION
-RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
-    && python get-pip.py pip==${PIP_VERSION}
-
-RUN rm -rf /tmp/*
-
 ARG DEVCONTAINER_USER
 RUN usermod -aG sudo $DEVCONTAINER_USER \
     && passwd -d $DEVCONTAINER_USER

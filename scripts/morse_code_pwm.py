@@ -2,7 +2,10 @@ from time import sleep
 from machine import Pin, PWM
 
 
-MESSAGE = "ruido de ola"
+MESSAGE = (
+    "ese fantasma que corre delante de ti, hermano mio, es mas bello que tu "
+    "por que no le das tu carne y tus huesos?"
+)
 
 DOT_WAIT = 0.5
 DASH_WAIT = DOT_WAIT * 3
@@ -13,7 +16,7 @@ WORD_PAUSE_SIMBOL = "#"
 
 PWM_MAX = 65025
 PWM_WINDOW = 8
-PWM_WAIT = 1e-6
+PWM_WAIT = 1e-3
 
 CODE_MAP = {
     "a": ".-",
@@ -53,7 +56,7 @@ CODE_MAP = {
     "8": "---..",
     "9": "----.",
     "0": "-----",
-    ", ": "--..--",
+    ",": "--..--",
     ".": ".-.-.-",
     "?": "..--..",
     "/": "-..-.",
@@ -69,10 +72,7 @@ def normalize_text(text: str) -> str:
 
 
 def get_encoded_chars(word: str) -> str:
-    encoded_chars = f"{CHAR_PAUSE_SIMBOL}".join(
-        CODE_MAP[char] for char in word
-    )
-
+    encoded_chars = f"{CHAR_PAUSE_SIMBOL}".join(CODE_MAP[char] for char in word)
     return encoded_chars
 
 
@@ -108,7 +108,7 @@ message = normalize_text(MESSAGE)
 encoded_words = (get_encoded_chars(word) for word in message.split())
 encoded_message = f"{WORD_PAUSE_SIMBOL}".join(encoded_words)
 
-pwm = PWM(Pin(13))
+pwm = PWM(Pin(9))
 pwm.freq(1000)
 onbd_led = Pin(25, Pin.OUT)
 
