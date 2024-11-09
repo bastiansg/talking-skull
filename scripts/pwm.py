@@ -2,13 +2,12 @@ from time import sleep
 from machine import Pin, PWM
 
 
-PWM_WAIT = 1e-6
+PWM_WAIT = 1e-3
 PWM_MAX = 65025
-PWM_WINDOW = 8
-PWM_WAIT = 1e-6
+PWM_WINDOW = 16
 
 
-pwm = PWM(Pin(13))
+pwm = PWM(Pin(9))
 pwm.freq(1000)
 
 while True:

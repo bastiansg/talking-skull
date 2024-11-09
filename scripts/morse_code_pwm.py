@@ -3,7 +3,7 @@ from machine import Pin, PWM
 
 
 MESSAGE = (
-    "ese fantasma que corre delante de ti, hermano mio, es mas bello que tu "
+    "ese fantasma que corre delante de ti, hermano mio, es mas bello que tu, "
     "por que no le das tu carne y tus huesos?"
 )
 
@@ -15,7 +15,7 @@ CHAR_PAUSE_SIMBOL = "@"
 WORD_PAUSE_SIMBOL = "#"
 
 PWM_MAX = 65025
-PWM_WINDOW = 8
+PWM_WINDOW = 32
 PWM_WAIT = 1e-3
 
 CODE_MAP = {
