@@ -1,5 +1,6 @@
-from time import sleep
 from machine import Pin, PWM  # type: ignore
+
+from .led import set_pwm_duty
 
 
 class IntermittentMode:
@@ -17,12 +18,20 @@ class IntermittentMode:
         self.pwm.freq(1000)
 
     def run(self) -> None:
-        for duty in range(0, self.pwm_max, self.pwm_window):
-            self.pwm.duty_u16(duty)
-            sleep(self.pwm_wait)
+        set_pwm_duty(
+            pwm=self.pwm,
+            start=0,
+            stop=self.pwm_max,
+            step=self.pwm_window,
+            pwm_wait=self.pwm_wait,
+        )
 
-        for duty in range(self.pwm_max, 0, -self.pwm_window):
-            self.pwm.duty_u16(duty)
-            sleep(self.pwm_wait)
+        set_pwm_duty(
+            pwm=self.pwm,
+            start=self.pwm_max,
+            stop=0,
+            step=-self.pwm_window,
+            pwm_wait=self.pwm_wait,
+        )
 
         self.pwm.duty_u16(0)

@@ -14,6 +14,18 @@ def blink_led(pin: Pin, wait_time: float, n: int):
         sleep(wait_time)
 
 
+def set_pwm_duty(
+    pwm: PWM,
+    start: int,
+    stop: int,
+    step: int,
+    pwm_wait: float,
+) -> None:
+    for duty in range(start, stop, step):
+        pwm.duty_u16(duty)
+        sleep(pwm_wait)
+
+
 def turn_on_pwm(
     pwm: PWM,
     wait_time: float,
@@ -22,15 +34,22 @@ def turn_on_pwm(
     pwm_window: int,
     pwm_max: int = 65025,
 ):
-    for duty in range(0, pwm_max, pwm_window):
-        pwm.duty_u16(duty)
-        sleep(pwm_wait)
+    set_pwm_duty(
+        pwm=pwm,
+        start=0,
+        stop=pwm_max,
+        step=pwm_window,
+        pwm_wait=pwm_wait,
+    )
 
     sleep(wait_time)
-
-    for duty in range(pwm_max, 0, -pwm_window):
-        pwm.duty_u16(duty)
-        sleep(pwm_wait)
+    set_pwm_duty(
+        pwm=pwm,
+        start=pwm_max,
+        stop=0,
+        step=-pwm_window,
+        pwm_wait=pwm_wait,
+    )
 
     # Each dot or dash within an encoded character is followed by
     # a period of signal absence, called a space, equal to the dot duration

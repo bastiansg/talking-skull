@@ -1,6 +1,7 @@
 from machine import Pin  # type: ignore
 
 from modes.intermittent import IntermittentMode
+from modes.intermittete_fast import IntermittentFastMode
 from modes.morse import MorseMode
 
 from modes.led import blink_led
@@ -11,6 +12,7 @@ from components.button import Button
 mode = Mode(
     modes=[
         IntermittentMode(),
+        IntermittentFastMode(),
         MorseMode(),
     ]
 )
