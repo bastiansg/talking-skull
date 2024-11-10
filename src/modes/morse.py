@@ -5,10 +5,7 @@ from .text import normalize_text, get_encoded_chars
 from .led import turn_on_led, blink_led, turn_on_pwm
 
 
-DEFAULT_MESSAGE = (
-    "ese fantasma que corre delante de ti, hermano mio, es mas bello que tu, "
-    "por que no le das tu carne y tus huesos?"
-)
+DEFAULT_MESSAGE = "human after all"
 
 
 class MorseMode:
