@@ -1,6 +1,6 @@
 from machine import Pin, PWM  # type: ignore
 
-from .led import set_pwm_duty_double
+from .led import set_pwm_duty
 
 
 class IntermittentDoubleMode:
@@ -21,18 +21,32 @@ class IntermittentDoubleMode:
         self.pwm_2.freq(1000)
 
     def run(self) -> None:
-        set_pwm_duty_double(
-            pwm_1=self.pwm_1,
-            pwm_2=self.pwm_2,
+        set_pwm_duty(
+            pwm=self.pwm_1,
             start=0,
             stop=self.pwm_max,
             step=self.pwm_window,
             pwm_wait=self.pwm_wait,
         )
 
-        set_pwm_duty_double(
-            pwm_1=self.pwm_1,
-            pwm_2=self.pwm_2,
+        set_pwm_duty(
+            pwm=self.pwm_1,
+            start=self.pwm_max,
+            stop=0,
+            step=-self.pwm_window,
+            pwm_wait=self.pwm_wait,
+        )
+
+        set_pwm_duty(
+            pwm=self.pwm_2,
+            start=0,
+            stop=self.pwm_max,
+            step=self.pwm_window,
+            pwm_wait=self.pwm_wait,
+        )
+
+        set_pwm_duty(
+            pwm=self.pwm_2,
             start=self.pwm_max,
             stop=0,
             step=-self.pwm_window,
