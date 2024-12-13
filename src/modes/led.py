@@ -26,6 +26,21 @@ def set_pwm_duty(
         sleep(pwm_wait)
 
 
+def set_pwm_duty_double(
+    pwm_1: PWM,
+    pwm_2: PWM,
+    start: int,
+    stop: int,
+    step: int,
+    pwm_wait: float,
+) -> None:
+    for duty in range(start, stop, step):
+        pwm_1.duty_u16(duty)
+        pwm_2.duty_u16(stop - duty)
+
+        sleep(pwm_wait)
+
+
 def turn_on_pwm(
     pwm: PWM,
     wait_time: float,
